@@ -69,7 +69,7 @@ func FailIfError(ctx context.Context, request, response interface{}, err error) 
 	return TypeSuccess
 }
 
-// NoDecoration returns the original err.
+// NoDecoration returns the original err. 无装饰错误
 func NoDecoration(ctx context.Context, request interface{}, err error) error {
 	return err
 }

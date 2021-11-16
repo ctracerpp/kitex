@@ -35,6 +35,7 @@ var (
 	afterMW1  = "AfterMiddleware1"
 )
 
+// invoke 一个EndPoint
 func invoke(ctx context.Context, req, resp interface{}) (err error) {
 	val, ok := req.(*val)
 	if ok {
@@ -43,6 +44,7 @@ func invoke(ctx context.Context, req, resp interface{}) (err error) {
 	return nil
 }
 
+// Middleware 包装了一个Endpoint ,输入一个EndPoint 输出一个EndPoint
 func mockMW0(next Endpoint) Endpoint {
 	return func(ctx context.Context, req, resp interface{}) (err error) {
 		val, ok := req.(*val)
@@ -78,10 +80,12 @@ func mockMW1(next Endpoint) Endpoint {
 }
 
 func TestChain(t *testing.T) {
+	// 链式调用 : mockMW0 -> mockMW1 -> invoke
 	mws := Chain(mockMW0, mockMW1)
 	req := &val{}
 	mws(invoke)(context.Background(), req, nil)
 	final := beforeMW0 + beforeMW1 + biz + afterMW1 + afterMW0
+	println(final)
 	test.Assert(t, req.str == final)
 }
 

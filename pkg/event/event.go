@@ -18,7 +18,7 @@ package event
 
 import "time"
 
-// Event represents an event.
+// Event represents an event. Event = event
 type Event struct {
 	Name   string
 	Time   time.Time

@@ -24,10 +24,11 @@ import (
 	"github.com/cloudwego/kitex/pkg/gofunc"
 )
 
-// Callback is called when the subscribed event happens.
+// Callback is called when the subscribed event happens. Callback 发生在事件订阅时
 type Callback func(*Event)
 
 // Bus implements the observer pattern to allow event dispatching and watching.
+// Bus 实现了观察者模式允许事件分发及观测
 type Bus interface {
 	Watch(event string, callback Callback)
 	Unwatch(event string, callback Callback)

@@ -23,17 +23,17 @@ import (
 )
 
 const (
-	// MaxEventNum is the default size of a event queue.
+	// MaxEventNum is the default size of a event queue. 最大事件队列为200
 	MaxEventNum = 200
 )
 
-// Queue is a ring to collect events.
+// Queue is a ring to collect events. Queue 是事件的环状容器
 type Queue interface {
 	Push(e *Event)
 	Dump() interface{}
 }
 
-// queue implements a fixed size Queue.
+// queue implements a fixed size Queue. queue 实现了固定大小的队列,环形队列，基于数组实现
 type queue struct {
 	ring        []*Event
 	tail        uint32
@@ -54,7 +54,7 @@ func NewQueue(cap int) Queue {
 	return q
 }
 
-// Push pushes an event to the queue.
+// Push pushes an event to the queue. 队列如果满了则循环替换  -> 类似环状
 func (q *queue) Push(e *Event) {
 	for {
 		old := atomic.LoadUint32(&q.tail)

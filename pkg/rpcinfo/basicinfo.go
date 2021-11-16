@@ -35,10 +35,10 @@ const (
 
 // client HTTP
 const (
-	// connection full url
+	// HTTPURL connection full url
 	HTTPURL = "http_url"
-	// specify host header
+	// HTTPHost specify host header
 	HTTPHost = "http_host"
-	// http header for remote message tag
+	// HTTPHost http header for remote message tag
 	HTTPHeader = "http_header"
 )
