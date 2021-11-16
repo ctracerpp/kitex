@@ -20,8 +20,11 @@ import "sync/atomic"
 
 // concurrencyLimiter implements ConcurrencyLimiter.
 type concurrencyLimiter struct {
+	// lim 限制数
 	lim int32
+	// now 当前数
 	now int32
+	// tmp 临时数
 	tmp int32
 }
 

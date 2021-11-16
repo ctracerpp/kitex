@@ -52,7 +52,9 @@ type Updatable interface {
 
 // LimitReporter is the interface define to report(metric or print log) when limit happen
 type LimitReporter interface {
+	// ConnOverloadReport 并发过高报告
 	ConnOverloadReport()
+	// QPSOverloadReport QPS过高报告
 	QPSOverloadReport()
 }
 

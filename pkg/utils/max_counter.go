@@ -20,7 +20,9 @@ import "sync/atomic"
 
 // MaxCounter is a integer counter with upper limit.
 type MaxCounter struct {
+	// now 当前计数器
 	now int64
+	// max 最大计数器
 	max int
 }
 

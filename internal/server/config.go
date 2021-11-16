@@ -24,14 +24,18 @@ import (
 )
 
 const (
+	// defaultExitWaitTime 默认退出等待时间
 	defaultExitWaitTime          = 5 * time.Second
+	// defaultAcceptFailedDelayTime 默认接收失败延迟时间
 	defaultAcceptFailedDelayTime = 10 * time.Millisecond
+	//defaultConnectionIdleTime 默认连接空闲时间
 	defaultConnectionIdleTime    = 10 * time.Minute
 )
 
+// defaultAddress 默认地址本机8888端口
 var defaultAddress = utils.NewNetAddr("tcp", ":8888")
 
-// Config contains some server-side configuration.
+// Config contains some server-side configuration. Config 包含了一些服务端的配置
 type Config struct {
 	Address net.Addr
 
@@ -45,7 +49,7 @@ type Config struct {
 	MaxConnectionIdleTime time.Duration
 }
 
-// NewConfig creates a new default config.
+// NewConfig creates a new default config. 创建一个默认配置
 func NewConfig() *Config {
 	return &Config{
 		Address:               defaultAddress,

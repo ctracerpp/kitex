@@ -23,12 +23,12 @@ import (
 	"github.com/cloudwego/kitex/pkg/endpoint"
 )
 
-// ClientTransHandlerFactory to new TransHandler for client
+// ClientTransHandlerFactory to new TransHandler for client 客户端传输句柄
 type ClientTransHandlerFactory interface {
 	NewTransHandler(opt *ClientOption) (ClientTransHandler, error)
 }
 
-// ServerTransHandlerFactory to new TransHandler for server
+// ServerTransHandlerFactory to new TransHandler for server 服务端传输句柄
 type ServerTransHandlerFactory interface {
 	NewTransHandler(opt *ServerOption) (ServerTransHandler, error)
 }

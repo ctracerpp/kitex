@@ -30,9 +30,13 @@ func NewServerLimiterHandler(conLimit limiter.ConcurrencyLimiter, qpsLimit limit
 	return &serverLimiterHandler{conLimit, qpsLimit, reporter}
 }
 
+// serverLimiterHandler 服务限流handler
 type serverLimiterHandler struct {
+	// conLimit 并发限制
 	conLimit limiter.ConcurrencyLimiter
+	// qpsLimit 速率限制器
 	qpsLimit limiter.RateLimiter
+	// reporter 限流报告
 	reporter limiter.LimitReporter
 }
 

@@ -34,7 +34,7 @@ type NocopyWrite interface {
 	WriteDirect(buf []byte, remainCap int) error
 }
 
-// ByteBuffer is the core abstraction of buffer in Kitex.
+// ByteBuffer is the core abstraction of buffer in Kitex. ByteBuffer 字节缓存
 type ByteBuffer interface {
 	io.ReadWriter
 

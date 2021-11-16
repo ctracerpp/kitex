@@ -41,6 +41,7 @@ func NewGRPCCodec() remote.Codec {
 	return new(grpcCodec)
 }
 
+// grpcCodec grpc 编码器
 type grpcCodec struct{}
 
 func (c *grpcCodec) Encode(ctx context.Context, message remote.Message, out remote.ByteBuffer) (err error) {

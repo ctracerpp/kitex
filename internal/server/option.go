@@ -47,45 +47,58 @@ func init() {
 	remote.PutPayloadCode(serviceinfo.Protobuf, protobuf.NewProtobufCodec())
 }
 
-// Option is the only way to config a server.
+// Option is the only way to config a server. Option 是配置服务端的唯一方式
 type Option struct {
 	F func(o *Options, di *utils.Slice)
 }
 
-// Options is used to initialize the server.
+// Options is used to initialize the server. Options 用来初始化服务端
 type Options struct {
+	// Svr 服务端终端基本信息
 	Svr      *rpcinfo.EndpointBasicInfo
+	// Configs 包含RPC的配置信息
 	Configs  rpcinfo.RPCConfig
+	// LockBits 位锁
 	LockBits int
+	// Once 确定Option 只被设置一次
 	Once     *configutil.OptionOnce
-
+	// MetaHandlers 元句柄
 	MetaHandlers []remote.MetaHandler
-
+	// RemoteOpt 服务选项
 	RemoteOpt *remote.ServerOption
+	// ErrHandle 错误句柄
 	ErrHandle func(error) error
+	// Proxy 反向代理
 	Proxy     proxy.BackwardProxy
 
-	// Registry is used for service registry.
+	// Registry is used for service registry. 用于服务注册
 	Registry registry.Registry
-	// RegistryInfo is used to in registry.
+	// RegistryInfo is used to in registry. 服务注册信息
 	RegistryInfo *registry.Info
-
+	// ACLRules 访问控制策略
 	ACLRules      []acl.RejectFunc
+	// Limits 限流配置
 	Limits        *limit.Option
+	// LimitReporter 限流报告
 	LimitReporter limiter.LimitReporter
-
+	// MWBs  生成一个携带上下文信息的middleware
 	MWBs []endpoint.MiddlewareBuilder
-
+	// Bus 实现了观察者模式允许事件分发及观测
 	Bus    event.Bus
+	// Events 事件队列
 	Events event.Queue
 
 	// DebugInfo should only contains objects that are suitable for json serialization.
 	DebugInfo    utils.Slice
+	// DebugService 调试服务
 	DebugService diagnosis.Service
 
 	// Observability
+	// Logger 日志记录
 	Logger     klog.FormatLogger
+	// TracerCtl 追踪控制
 	TracerCtl  *internal_stats.Controller
+	// StatsLevel 统计级别
 	StatsLevel *stats.Level
 }
 

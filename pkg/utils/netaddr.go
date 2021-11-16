@@ -20,9 +20,11 @@ import "net"
 
 var _ net.Addr = &NetAddr{}
 
-// NetAddr implements the net.Addr interface.
+// NetAddr implements the net.Addr interface. 网络地址实现了net.addr
 type NetAddr struct {
+	// network 网络名称 tcp / udp
 	network string
+	// address 网络地址 192.168.1.126:8080
 	address string
 }
 
